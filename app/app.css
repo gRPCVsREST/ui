@@ -1,0 +1,95 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 7vmin;
+}
+
+.view {
+  width: 100%;
+  height: 100%;
+}
+
+.voting {
+ min-height: 450px;
+}
+
+.voting .voting-buttons {
+    width: auto;
+    height: auto;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row; /* works with row or column */
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.voting .voting-buttons > button {
+    height: 20%;
+    min-height: 150px;
+    min-width:  350px;
+    width: 35%;
+    background-color: #4285F4;
+    color: #FFFFFF;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+}
+
+.leaderboard .container {
+	width: 100%;
+}
+.leaderboard .left {
+	width: 30%;
+    float: left;
+    display: inline-block;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: left;
+}
+.leaderboard .right {
+	width: 30%;
+    display: inline-block;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: left;
+}
+.leaderboard ul {
+  list-style: none;
+}

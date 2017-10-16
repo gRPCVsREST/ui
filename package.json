@@ -1,0 +1,21 @@
+{
+  "name": "PokemonOrBigData",
+  "version": "1.0.0",
+  "description": "REST vs gRPC demo project.",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "http-proxy": "^1.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gRPCVsREST/ui.git"
+  },
+  "author": "Yevgen Golubenko",
+  "license": "MIT"
+}
