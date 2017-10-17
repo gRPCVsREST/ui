@@ -11,6 +11,8 @@ angular.module('pokemonOrBigData.leaderBoard', ['ngRoute'])
 
 .controller('LeaderBoardCtrl', ['$scope', 'globalService', '$timeout', function($scope, globalService, $timeout) {
 
+  var interval = 5000;
+
   $scope.pokemons = {
     total: 0,
     lines: []
@@ -21,18 +23,20 @@ angular.module('pokemonOrBigData.leaderBoard', ['ngRoute'])
     lines: []
   };
 
+  $scope.promises = {};
+
   var successPokemonCallback = function(response) {
     $scope.pokemons = response;
-    $timeout( function() {
+    $scope.promises.pokemon = $timeout( function() {
       globalService.leaderboard('Pokemon', successPokemonCallback, errorCallback);
-    })
+    }, interval);
   }
 
   var successBigDataCallback = function(response) {
-    $scope.pokemons = response;
-    $timeout( function() {
+    $scope.bigdatas = response;
+    $scope.promises.bigdata = $timeout( function() {
       globalService.leaderboard('BigData', successBigDataCallback, errorCallback);
-    })
+    }, interval);
   }
 
   var errorCallback = function(error) {
@@ -41,4 +45,14 @@ angular.module('pokemonOrBigData.leaderBoard', ['ngRoute'])
 
   globalService.leaderboard('Pokemon', successPokemonCallback, errorCallback);
   globalService.leaderboard('BigData', successBigDataCallback, errorCallback);
+
+  $scope.$on("$destroy", function() {
+    if ($scope.promises.pokemon) {
+      $timeout.cancel($scope.promises.pokemon);
+    }
+
+    if ($scope.promises.bigdata) {
+      $timeout.cancel($scope.promises.bigdata);
+    }
+  });
 }]);

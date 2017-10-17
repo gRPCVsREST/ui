@@ -69,16 +69,16 @@ angular.module('pokemonOrBigData').service('globalService', ['$http', '$location
         .replace('$votedcategory$', category);
       $http.put(url, {}).then(
         function(response) {
-          console.log('Vote successful. ' + getName() + " voted for " + category, response);
+          console.log('Vote successful. ' + _getName() + " voted for " + category, response);
         },
         function(error) {
-          console.log('Vote failed. ' + getName() + " voted for " + category, error);
+          console.log('Vote failed. ' + _getName() + " voted for " + category, error);
         }
       );
     },
 
     leaderboard: function(type, successCallback, errorCallback) {
-      $http.get(leaderboardUri + type, {})
+      $http.get(leaderboardUri.replace('$type$', type), {})
         .then(function(response) {
           successCallback(response);
         },

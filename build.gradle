@@ -1,0 +1,49 @@
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:3.1.0'
+    }
+
+}
+plugins {
+    id 'idea'
+}
+
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+repositories {
+    jcenter()
+}
+
+task buildImage(type: DockerBuildImage) {
+    inputDir = project.projectDir
+    tag = 'ui'
+}
+
+
+task buildDocker(type: DockerBuildImage) {
+    inputDir = project.projectDir
+    tag = 'ui:latest'
+}
+
+task tagDocker(type: Exec) {
+    dependsOn buildDocker
+    commandLine 'docker', 'tag', 'ui:latest', 'gcr.io/alien-fold-180922/ui:latest'
+}
+
+task pushDocker(type: Exec) {
+    dependsOn tagDocker
+    commandLine 'gcloud', 'docker', '--', 'push', 'gcr.io/alien-fold-180922/ui:latest'
+}
+
+task deploy(type: Exec) {
+    commandLine './k8s/deploy.sh'
+}
+
+task undeploy(type: Exec) {
+    commandLine 'kubectl', 'delete', '-f', 'k8s/ui.yaml'
+}
