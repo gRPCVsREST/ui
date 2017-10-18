@@ -47,9 +47,9 @@ angular.module('pokemonOrBigData').service('globalService', ['$http', '$location
 
     feed: function(successCallback, errorCallback) {
       $http.get(feedUri, {
-        // headers: {
-        //     "username": "petya"
-        // }
+        headers: {
+          "username": _getName()
+        }
       })
         .then(function(response) {
           if (response && response.data) {

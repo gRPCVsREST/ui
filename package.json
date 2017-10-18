@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.13.2",
     "express": "^4.13.1",
-    "http-proxy": "^1.11.1"
+    "http-proxy": "^1.11.1",
+    "jscs": "^3.0.7"
   },
   "devDependencies": {},
   "scripts": {

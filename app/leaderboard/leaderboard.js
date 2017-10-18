@@ -1,13 +1,6 @@
 'use strict';
 
-angular.module('pokemonOrBigData.leaderBoard', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/leaderboard', {
-    templateUrl: 'leaderboard/leaderboard.html',
-    controller: 'LeaderBoardCtrl'
-  });
-}])
+angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
 
 .controller('LeaderBoardCtrl', ['$scope', 'globalService', '$timeout', function($scope, globalService, $timeout) {
 
@@ -26,17 +19,19 @@ angular.module('pokemonOrBigData.leaderBoard', ['ngRoute'])
   $scope.promises = {};
 
   var successPokemonCallback = function(response) {
-    $scope.pokemons = response;
+    $scope.pokemons = response.data;
+
     $scope.promises.pokemon = $timeout( function() {
       globalService.leaderboard('Pokemon', successPokemonCallback, errorCallback);
     }, interval);
   }
 
   var successBigDataCallback = function(response) {
-    $scope.bigdatas = response;
+    $scope.bigdatas = response.data;
     $scope.promises.bigdata = $timeout( function() {
       globalService.leaderboard('BigData', successBigDataCallback, errorCallback);
     }, interval);
+
   }
 
   var errorCallback = function(error) {
