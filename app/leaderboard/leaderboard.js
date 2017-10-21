@@ -4,6 +4,8 @@ angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
 
 .controller('LeaderBoardCtrl', ['$scope', 'globalService', '$timeout', function($scope, globalService, $timeout) {
 
+  var pokemon = 'Pokemon';
+  var bigData = 'Big Data';
   var interval = 5000;
 
   $scope.pokemons = {
@@ -22,14 +24,14 @@ angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
     $scope.pokemons = response.data;
 
     $scope.promises.pokemon = $timeout( function() {
-      globalService.leaderboard('Pokemon', successPokemonCallback, errorCallback);
+      globalService.leaderboard(pokemon, successPokemonCallback, errorCallback);
     }, interval);
   }
 
   var successBigDataCallback = function(response) {
     $scope.bigdatas = response.data;
     $scope.promises.bigdata = $timeout( function() {
-      globalService.leaderboard('BigData', successBigDataCallback, errorCallback);
+      globalService.leaderboard(bigData, successBigDataCallback, errorCallback);
     }, interval);
 
   }
@@ -38,8 +40,8 @@ angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
     console.log('Error: ', error);
   }
 
-  globalService.leaderboard('Pokemon', successPokemonCallback, errorCallback);
-  globalService.leaderboard('BigData', successBigDataCallback, errorCallback);
+  globalService.leaderboard(pokemon, successPokemonCallback, errorCallback);
+  globalService.leaderboard(bigData, successBigDataCallback, errorCallback);
 
   $scope.$on("$destroy", function() {
     if ($scope.promises.pokemon) {

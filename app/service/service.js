@@ -78,7 +78,7 @@ angular.module('pokemonOrBigData').service('globalService', ['$http', '$location
     },
 
     leaderboard: function(type, successCallback, errorCallback) {
-      $http.get(leaderboardUri.replace('$type$', type), {})
+      $http.get(leaderboardUri.replace('$type$', encodeURIComponent(type)), {})
         .then(function(response) {
           successCallback(response);
         },
