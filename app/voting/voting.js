@@ -44,14 +44,14 @@ angular.module('pokemonOrBigData.voting', ['ui.router'])
   $scope.onPokemonClick = function($event) {
     if (!$scope.clicked) {
       $scope.clicked = true;
-      vote('Pokemon');
+      vote('ZRADA');
     }
   };
 
   $scope.onBigDataClick = function($event) {
     if (!$scope.clicked) {
       $scope.clicked = true;
-      vote('Big Data');
+      vote('PEREMOGA');
     }
   };
 

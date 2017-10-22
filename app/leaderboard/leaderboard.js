@@ -4,8 +4,8 @@ angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
 
 .controller('LeaderBoardCtrl', ['$scope', 'globalService', '$timeout', function($scope, globalService, $timeout) {
 
-  var pokemon = 'Pokemon';
-  var bigData = 'Big Data';
+  var pokemon = 'ZRADA';
+  var bigData = 'PEREMOGA';
   var interval = 5000;
 
   $scope.pokemons = {
