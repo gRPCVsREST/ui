@@ -17,10 +17,13 @@ body {
 }
 
 .voting {
- min-height: 450px;
-
+    min-height: 450px;
+    height:100%;
 }
 
+.voting-question {
+    height: 3.4em;
+}
 .voting .voting-buttons {
     width: auto;
     height: auto;
@@ -70,7 +73,7 @@ body {
     height: 100%;
     float: left;
     display: inline-block;
-    text-align: /*left*/center;
+    text-align: left/*center*/;
     color: #4285F4;
     background-color: #FFFFFF;
 }
@@ -78,10 +81,12 @@ body {
 	width: 50%;
     height: 100%;
     display: inline-block;
-    text-align: /*left*/center;
+    text-align: left/*center*/;
     color: #FFFFFF;
     background-color:  #4285F4;
 }
-.leaderboard ul {
-  list-style: none;
+.leaderboard .user-id {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+    padding-left: 25px;
 }

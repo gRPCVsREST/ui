@@ -3,7 +3,6 @@
     <p class="voting-question">{{ question.content }}</p>
 
     <div class="voting-buttons">
-        <button ng-if="next" ng-disabled="clicked" class="next" ng-click="onNextClick($event)">Next</button>
         <button ng-if="!next" ng-disabled="clicked" class="vote" ng-click="onPokemonClick($event)">ЗРАДА</button>
         <button ng-if="!next" ng-disabled="clicked" class="vote" ng-click="onBigDataClick($event)">ПЕРЕМОГА</button>
     </div>

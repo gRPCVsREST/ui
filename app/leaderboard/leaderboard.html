@@ -2,21 +2,11 @@
     <div class="container">
         <div class="left">
             <p style="font-weight: bolder; text-align: center;">Зрада</p>
-            <ul>
-                <li ng-model="item" ng-repeat="item in pokemons.lines">
-                    {{ item.userId }}
-                    <!--<span style="float:right;"> {{ item.score }} </span>-->
-                </li>
-            </ul>
+            <p class="user-id" ng-model="item" ng-repeat="item in pokemons.lines">{{ item.userId }}</p>
         </div>
         <div class="right">
             <p style="font-weight: bolder; text-align: center;">Перемога</p>
-            <ul>
-                <li ng-model="item" ng-repeat="item in bigdatas.lines">
-                    {{ item.userId }}
-                    <!--<span style="float:right;"> {{ item.score }} </span>-->
-                </li>
-            </ul>
+            <p class="user-id" ng-model="item" ng-repeat="item in bigdatas.lines">{{ item.userId }}</p>
         </div>
     </div>
 </div>

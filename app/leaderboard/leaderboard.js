@@ -21,6 +21,7 @@ angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
   $scope.promises = {};
 
   var successPokemonCallback = function(response) {
+    response.data.lines.splice(5);
     $scope.pokemons = response.data;
 
     $scope.promises.pokemon = $timeout( function() {
@@ -29,6 +30,7 @@ angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
   }
 
   var successBigDataCallback = function(response) {
+    response.data.lines.splice(5);
     $scope.bigdatas = response.data;
     $scope.promises.bigdata = $timeout( function() {
       globalService.leaderboard(bigData, successBigDataCallback, errorCallback);

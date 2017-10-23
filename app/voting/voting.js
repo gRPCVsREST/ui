@@ -2,7 +2,8 @@
 
 angular.module('pokemonOrBigData.voting', ['ui.router'])
 
-.controller('VotingCtrl', ['$scope', 'globalService', '$stateParams', function($scope, globalService, $stateParams) {
+.controller('VotingCtrl', ['$scope', 'globalService', '$stateParams', '$element',
+    function($scope, globalService, $stateParams, $element) {
   $scope.next = $stateParams.next;
 
   $scope.clicked = false;
@@ -34,12 +35,14 @@ angular.module('pokemonOrBigData.voting', ['ui.router'])
 
   globalService.feed( successCallback, errorCallback );
 
-  $scope.onNextClick = function($event) {
-    if (!$scope.clicked) {
-      $scope.clicked = true;
-      globalService.feed(successCallback, errorCallback);
-    }
-  };
+  if ($scope.next) {
+      $element.on('click', function ($event) {
+          if (!$scope.clicked) {
+              $scope.clicked = true;
+              globalService.feed(successCallback, errorCallback);
+          }
+      });
+  }
 
   $scope.onPokemonClick = function($event) {
     if (!$scope.clicked) {
