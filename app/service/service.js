@@ -1281,8 +1281,8 @@ angular.module('pokemonOrBigData').service('globalService', ['$http', '$location
     }
 
     function generateName() {
-        return adjectives[get_random_integer(adjectives.length)] + '_' +
-            nouns[get_random_integer(nouns.length)] + '_' + get_random_integer(8999, 1001);
+        return (adjectives[get_random_integer(adjectives.length)] + '_' +
+            nouns[get_random_integer(nouns.length)] + '_' + get_random_integer(8999, 1001)).toLowerCase();
     }
 
     function _getName() {
