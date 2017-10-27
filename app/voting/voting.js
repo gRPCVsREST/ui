@@ -1,61 +1,61 @@
-'use strict';
+define(function () {
+    function votingController($scope, globalService, $stateParams, $element) {
+        $scope.next = $stateParams.next;
 
-angular.module('pokemonOrBigData.voting', ['ui.router'])
+        $scope.clicked = false;
 
-.controller('VotingCtrl', ['$scope', 'globalService', '$stateParams', '$element',
-    function($scope, globalService, $stateParams, $element) {
-  $scope.next = $stateParams.next;
+        $scope.question = {
+            id: 0,
+            content: '',
+            category: ''
+        };
 
-  $scope.clicked = false;
+        var successCallback = function (response) {
+            $scope.question.id = response.id;
+            $scope.question.content = response.content;
+            $scope.question.category = response.category;
+            $scope.clicked = false;
+        }
 
-  $scope.question = {
-    id: 0,
-    content: '',
-    category: ''
-  };
+        var errorCallback = function (error) {
+            console.log('Error: ', error);
+            console.log('Getting next item');
+            $scope.clicked = false;
+            globalService.feed(successCallback, errorCallback);
+        }
 
-  var successCallback = function(response) {
-    $scope.question.id = response.id;
-    $scope.question.content = response.content;
-    $scope.question.category = response.category;
-    $scope.clicked = false;
-  }
+        var vote = function (category) {
+            globalService.vote(category, $scope.question.id);
+            globalService.feed(successCallback, errorCallback);
+        }
 
-  var errorCallback = function(error) {
-    console.log('Error: ', error);
-    console.log('Getting next item');
-    $scope.clicked = false;
-    globalService.feed( successCallback, errorCallback );
-  }
+        globalService.feed(successCallback, errorCallback);
 
-  var vote = function(category) {
-    globalService.vote(category, $scope.question.id);
-    globalService.feed( successCallback, errorCallback );
-  }
+        if ($scope.next) {
+            $element.on('click', function ($event) {
+                if (!$scope.clicked) {
+                    $scope.clicked = true;
+                    globalService.feed(successCallback, errorCallback);
+                }
+            });
+        }
 
-  globalService.feed( successCallback, errorCallback );
+        $scope.onPokemonClick = function ($event) {
+            if (!$scope.clicked) {
+                $scope.clicked = true;
+                vote('ZRADA');
+            }
+        };
 
-  if ($scope.next) {
-      $element.on('click', function ($event) {
-          if (!$scope.clicked) {
-              $scope.clicked = true;
-              globalService.feed(successCallback, errorCallback);
-          }
-      });
-  }
-
-  $scope.onPokemonClick = function($event) {
-    if (!$scope.clicked) {
-      $scope.clicked = true;
-      vote('ZRADA');
+        $scope.onBigDataClick = function ($event) {
+            if (!$scope.clicked) {
+                $scope.clicked = true;
+                vote('PEREMOGA');
+            }
+        };
     }
-  };
 
-  $scope.onBigDataClick = function($event) {
-    if (!$scope.clicked) {
-      $scope.clicked = true;
-      vote('PEREMOGA');
-    }
-  };
+    votingController.$inject = ['$scope', 'globalService', '$stateParams', '$element'];
 
-}]);
+    return votingController;
+});

@@ -1,57 +1,59 @@
-'use strict';
+define(function () {
+    function leaderBoardController($scope, globalService, $timeout) {
 
-angular.module('pokemonOrBigData.leaderBoard', ['ui.router'])
+        var pokemon = 'ZRADA';
+        var bigData = 'PEREMOGA';
+        var interval = 5000;
 
-.controller('LeaderBoardCtrl', ['$scope', 'globalService', '$timeout', function($scope, globalService, $timeout) {
+        $scope.pokemons = {
+            total: 0,
+            lines: []
+        };
 
-  var pokemon = 'ZRADA';
-  var bigData = 'PEREMOGA';
-  var interval = 5000;
+        $scope.bigdatas = {
+            total: 0,
+            lines: []
+        };
 
-  $scope.pokemons = {
-    total: 0,
-    lines: []
-  };
+        $scope.promises = {};
 
-  $scope.bigdatas = {
-    total: 0,
-    lines: []
-  };
+        var successPokemonCallback = function (response) {
+            response.data.lines.splice(5);
+            $scope.pokemons = response.data;
 
-  $scope.promises = {};
+            $scope.promises.pokemon = $timeout(function () {
+                globalService.leaderboard(pokemon, successPokemonCallback, errorCallback);
+            }, interval);
+        }
 
-  var successPokemonCallback = function(response) {
-    response.data.lines.splice(5);
-    $scope.pokemons = response.data;
+        var successBigDataCallback = function (response) {
+            response.data.lines.splice(5);
+            $scope.bigdatas = response.data;
+            $scope.promises.bigdata = $timeout(function () {
+                globalService.leaderboard(bigData, successBigDataCallback, errorCallback);
+            }, interval);
 
-    $scope.promises.pokemon = $timeout( function() {
-      globalService.leaderboard(pokemon, successPokemonCallback, errorCallback);
-    }, interval);
-  }
+        }
 
-  var successBigDataCallback = function(response) {
-    response.data.lines.splice(5);
-    $scope.bigdatas = response.data;
-    $scope.promises.bigdata = $timeout( function() {
-      globalService.leaderboard(bigData, successBigDataCallback, errorCallback);
-    }, interval);
+        var errorCallback = function (error) {
+            console.log('Error: ', error);
+        }
 
-  }
+        globalService.leaderboard(pokemon, successPokemonCallback, errorCallback);
+        globalService.leaderboard(bigData, successBigDataCallback, errorCallback);
 
-  var errorCallback = function(error) {
-    console.log('Error: ', error);
-  }
+        $scope.$on("$destroy", function () {
+            if ($scope.promises.pokemon) {
+                $timeout.cancel($scope.promises.pokemon);
+            }
 
-  globalService.leaderboard(pokemon, successPokemonCallback, errorCallback);
-  globalService.leaderboard(bigData, successBigDataCallback, errorCallback);
-
-  $scope.$on("$destroy", function() {
-    if ($scope.promises.pokemon) {
-      $timeout.cancel($scope.promises.pokemon);
+            if ($scope.promises.bigdata) {
+                $timeout.cancel($scope.promises.bigdata);
+            }
+        });
     }
 
-    if ($scope.promises.bigdata) {
-      $timeout.cancel($scope.promises.bigdata);
-    }
-  });
-}]);
+    leaderBoardController.$inject = ['$scope', 'globalService', '$timeout'];
+
+    return leaderBoardController;
+});

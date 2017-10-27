@@ -1,49 +1,43 @@
-'use strict';
+define(['service/service',
+        'leaderboard/leaderboard',
+        'voting/voting',
+        'components/nameGenerator'],
 
-angular.module('pokemonOrBigData', ['ui.router',
-  'pokemonOrBigData.voting',
-  'pokemonOrBigData.leaderBoard',
-  'pokemonOrBigData.name-directive'
-])
-    .config(['$locationProvider', '$urlRouterProvider', '$stateProvider',
-        function($locationProvider, $urlRouterProvider, $stateProvider) {
+    function (globalService, leaderBoardController, votingController, nameGenerator) {
+        var app = angular.module('pokemonOrBigData', ['ui.router']);
 
-          $urlRouterProvider.otherwise('/voting');
+        app.service('globalService', globalService)
+        app.controller('leaderBoardController', leaderBoardController);
+        app.controller('votingController', votingController);
+        app.directive('nameGenerator', nameGenerator);
 
-            $stateProvider
-              .state('voting', {
-                url: '/voting',
-                templateUrl: 'voting/voting.html',
-                controller: 'VotingCtrl',
-                params: {
-                  next: false
-                }
-              })
-              .state('next', {
-                url: '/next',
-                templateUrl: 'voting/voting.html',
-                controller: 'VotingCtrl',
-                params: {
-                  next: true
-                }
-              })
-              .state('leaderboard', {
-                url: '/leaderboard',
-                templateUrl: 'leaderboard/leaderboard.html',
-                controller: 'LeaderBoardCtrl'
-              });
+        app.config(['$locationProvider', '$urlRouterProvider', '$stateProvider',
+            function ($locationProvider, $urlRouterProvider, $stateProvider) {
 
-           // $locationProvider.html5Mode(true);
-    }])
-    .constant('AUTH_EVENTS', {
-        loginSuccess: 'auth-login-success',
-        loginFailed: 'auth-login-failed',
-        logoutSuccess: 'auth-logout-success',
-        sessionTimeout: 'auth-session-timeout',
-        notAuthenticated: 'auth-not-authenticated',
-        notAuthorized: 'auth-not-authorized'
-    })
-    .constant('USER_ROLES', {
-    all: '*',
-    admin: 'admin'
-});
+                $urlRouterProvider.otherwise('/voting');
+
+                $stateProvider
+                    .state('voting', {
+                        url: '/voting',
+                        templateUrl: 'voting/voting.html',
+                        controller: 'votingController',
+                        params: {
+                            next: false
+                        }
+                    })
+                    .state('next', {
+                        url: '/next',
+                        templateUrl: 'voting/voting.html',
+                        controller: 'votingController',
+                        params: {
+                            next: true
+                        }
+                    })
+                    .state('leaderboard', {
+                        url: '/leaderboard',
+                        templateUrl: 'leaderboard/leaderboard.html',
+                        controller: 'leaderBoardController'
+                    });
+
+            }]);
+    });

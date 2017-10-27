@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Зрада чи перемога?</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <!--<base href="/">-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Зрада чи перемога?</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon"/>
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--<base href="/">-->
 </head>
-<body ng-app="pokemonOrBigData">
+<body pokemon-or-big-data>
 
-  <div class="content">
+<div class="content">
     <ui-view></ui-view>
     <!--<div ng-view class="view"></div>-->
-  </div>
+</div>
 
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
-  <script src="app.js"></script>
-  <script src="voting/voting.js"></script>
-  <script src="leaderboard/leaderboard.js"></script>
-  <script src="components/name-directive.js"></script>
-  <script src="service/service.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/requirejs/require.js"></script>
+<script src="require.config.js"></script>
+<script>
+    require(['app'], function () {
+        angular.bootstrap(document, ['pokemonOrBigData']);
+    });
+</script>
 </body>
 </html>
