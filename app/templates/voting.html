@@ -1,0 +1,9 @@
+<div ng-controller="votingController" class="voting">
+    <p class="name">@@greeting, <span style="font-weight: bolder; text-transform: capitalize;" name-generator></span></p>
+    <p class="voting-question">{{ question.content }}</p>
+
+    <div class="voting-buttons">
+        <button ng-if="!next" ng-disabled="clicked" class="vote" ng-click="onPokemonClick($event)">@@cat1_text</button>
+        <button ng-if="!next" ng-disabled="clicked" class="vote" ng-click="onBigDataClick($event)">@@cat2_text</button>
+    </div>
+</div>

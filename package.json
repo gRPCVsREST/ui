@@ -9,7 +9,10 @@
     "http-proxy": "^1.11.1",
     "jscs": "^3.0.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-replace": "^1.0.1"
+  },
   "scripts": {
     "start": "node index.js"
   },

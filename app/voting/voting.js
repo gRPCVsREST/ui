@@ -1,4 +1,5 @@
 define(function () {
+    
     function votingController($scope, globalService, $stateParams, $element) {
         $scope.next = $stateParams.next;
 
@@ -43,14 +44,14 @@ define(function () {
         $scope.onPokemonClick = function ($event) {
             if (!$scope.clicked) {
                 $scope.clicked = true;
-                vote('ZRADA');
+                vote(0);
             }
         };
 
         $scope.onBigDataClick = function ($event) {
             if (!$scope.clicked) {
                 $scope.clicked = true;
-                vote('PEREMOGA');
+                vote(1);
             }
         };
     }

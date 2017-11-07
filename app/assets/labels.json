@@ -1,0 +1,30 @@
+{
+  "zrada": {
+    "title": "Зрада чи перемога?",
+    "greeting": "Bitaю",
+    "categories": [
+      {
+        "query": "ZRADA",
+        "text": "Зрада"
+      },
+      {
+        "query": "PEREMOGA",
+        "text": "Перемога"
+      }
+    ]
+  },
+  "pokemon": {
+    "title": "Pokemon or Big Data?",
+    "greeting": "Hello",
+    "categories": [
+      {
+        "query": "POKEMON",
+        "text": "Pokemon"
+      },
+      {
+        "query": "BIG DATA",
+        "text": "Big Data"
+      }
+    ]
+  }
+}

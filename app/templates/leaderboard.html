@@ -1,11 +1,11 @@
 <div ng-controller="leaderBoardController" class="leaderboard">
     <div class="container">
         <div class="left">
-            <p style="font-weight: bolder; text-align: center;">Зрада</p>
+            <p style="font-weight: bolder; text-align: center;">@@cat1_text</p>
             <p class="user-id" ng-model="item" ng-repeat="item in pokemons.lines">{{ item.userId }}</p>
         </div>
         <div class="right">
-            <p style="font-weight: bolder; text-align: center;">Перемога</p>
+            <p style="font-weight: bolder; text-align: center;">@@cat2_text</p>
             <p class="user-id" ng-model="item" ng-repeat="item in bigdatas.lines">{{ item.userId }}</p>
         </div>
     </div>

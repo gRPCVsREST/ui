@@ -4,7 +4,8 @@ define(function (require) {
 
         var firstWordList = JSON.parse(require('text!assets/superb.json'));
         var secondWordList = JSON.parse(require('text!assets/superheroes.json'));
-        
+        var categories = JSON.parse(require('text!assets/categories.json'));
+
         var name = '';
 
         var localhost = $location.host() + ":" + $location.port();
@@ -53,16 +54,16 @@ define(function (require) {
                     );
             },
 
-            vote: function (category, questionId) {
+            vote: function (categoryId, questionId) {
                 var url = voteUri.replace('$username$', _getName())
                     .replace('$item_id$', questionId)
-                    .replace('$votedcategory$', category);
+                    .replace('$votedcategory$', encodeURIComponent(categories[categoryId]));
                 $http.put(url, {}).then(
                     function (response) {
-                        console.log('Vote successful. ' + _getName() + " voted for " + category, response);
+                        console.log('Vote successful. ' + _getName() + " voted for " + categories[categoryId], response);
                     },
                     function (error) {
-                        console.log('Vote failed. ' + _getName() + " voted for " + category, error);
+                        console.log('Vote failed. ' + _getName() + " voted for " + categories[categoryId], error);
                     }
                 );
             },
