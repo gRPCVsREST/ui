@@ -41,10 +41,10 @@ module.exports = function (grunt) {
                     ]
                 },
                 files: [
-                    {src: ['app/assets/templates/index.html'], dest: 'app/index.html'},
-                    {src: ['app/assets/templates/categories.json'], dest: 'app/assets/categories.json'},
-                    {src: ['app/assets/templates/leaderboard.html'], dest: 'app/leaderboard/leaderboard.html'},
-                    {src: ['app/assets/templates/voting.html'], dest: 'app/voting/voting.html'}
+                    {src: ['app/templates/index.html'], dest: 'app/index.html'},
+                    {src: ['app/templates/categories.json'], dest: 'app/assets/categories.json'},
+                    {src: ['app/templates/leaderboard.html'], dest: 'app/leaderboard/leaderboard.html'},
+                    {src: ['app/templates/voting.html'], dest: 'app/voting/voting.html'}
                 ]
             }
         }
