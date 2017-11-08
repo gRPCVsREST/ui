@@ -1,8 +1,7 @@
 define(function () {
     function leaderBoardController($scope, globalService, $timeout) {
-
-        var pokemon = 'ZRADA';
-        var bigData = 'PEREMOGA';
+        var pokemon = 0;
+        var bigData = 1;
         var interval = 5000;
 
         $scope.pokemons = {

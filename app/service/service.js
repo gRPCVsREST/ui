@@ -57,7 +57,7 @@ define(function (require) {
             vote: function (categoryId, questionId) {
                 var url = voteUri.replace('$username$', _getName())
                     .replace('$item_id$', questionId)
-                    .replace('$votedcategory$', encodeURIComponent(categories[categoryId]));
+                    .replace('$votedcategory$', encodeURIComponent(categories.vote[categoryId]));
                 $http.put(url, {}).then(
                     function (response) {
                         console.log('Vote successful. ' + _getName() + " voted for " + categories[categoryId], response);
@@ -68,8 +68,8 @@ define(function (require) {
                 );
             },
 
-            leaderboard: function (type, successCallback, errorCallback) {
-                $http.get(leaderboardUri.replace('$type$', encodeURIComponent(type)), {})
+            leaderboard: function (categoryId, successCallback, errorCallback) {
+                $http.get(leaderboardUri.replace('$type$', encodeURIComponent(categories.leaderboard[categoryId])), {})
                     .then(function (response) {
                             successCallback(response);
                         },

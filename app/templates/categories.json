@@ -1,1 +1,10 @@
-[ "@@cat1_query", "@@cat2_query" ]
+{
+  "vote": [
+    "@@cat1_vote",
+    "@@cat2_vote"
+  ],
+  "leaderboard": [
+    "@@cat1_leaderboard",
+    "@@cat2_leaderboard"
+  ]
+}
