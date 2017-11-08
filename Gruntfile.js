@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     var config = grunt.file.readJSON('app/assets/labels.json');
 
     var type = (grunt.option('type') || "").toLowerCase();
-    type = (['zrada', 'pokemon'].includes(type) ? type: 'pokemon');
+    type = (type == 'zrada' || type == 'pokemon'? type: 'pokemon');
     var labels = config[type];
     console.log(type, labels);
 
@@ -27,7 +27,11 @@ module.exports = function (grunt) {
                             replacement: labels.categories[0].text
                         },
                         {
-                            match: 'cat1_query',
+                            match: 'cat1_vote',
+                            replacement: labels.categories[0].query
+                        },
+                        {
+                            match: 'cat1_leaderboard',
                             replacement: labels.categories[0].query
                         },
                         {
@@ -35,7 +39,11 @@ module.exports = function (grunt) {
                             replacement: labels.categories[1].text
                         },
                         {
-                            match: 'cat2_query',
+                            match: 'cat2_vote',
+                            replacement: labels.categories[1].query
+                        },
+                        {
+                            match: 'cat2_leaderboard',
                             replacement: labels.categories[1].query
                         }
                     ]
