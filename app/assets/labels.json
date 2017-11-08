@@ -4,11 +4,13 @@
     "greeting": "Bitaю",
     "categories": [
       {
-        "query": "ZRADA",
+        "vote": "ZRADA",
+        "leaderboard": "ZRADA",
         "text": "Зрада"
       },
       {
-        "query": "PEREMOGA",
+        "vote": "PEREMOGA",
+        "leaderboard": "PEREMOGA",
         "text": "Перемога"
       }
     ]
@@ -18,11 +20,13 @@
     "greeting": "Hello",
     "categories": [
       {
-        "query": "POKEMON",
+        "vote": "POKEMON",
+        "leaderboard": "POKEMON",
         "text": "Pokemon"
       },
       {
-        "query": "BIG DATA",
+        "vote": "BIGDATA",
+        "leaderboard": "BIG DATA",
         "text": "Big Data"
       }
     ]

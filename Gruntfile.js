@@ -28,11 +28,11 @@ module.exports = function (grunt) {
                         },
                         {
                             match: 'cat1_vote',
-                            replacement: labels.categories[0].query
+                            replacement: labels.categories[0].vote
                         },
                         {
                             match: 'cat1_leaderboard',
-                            replacement: labels.categories[0].query
+                            replacement: labels.categories[0].leaderboard
                         },
                         {
                             match: 'cat2_text',
@@ -40,11 +40,11 @@ module.exports = function (grunt) {
                         },
                         {
                             match: 'cat2_vote',
-                            replacement: labels.categories[1].query
+                            replacement: labels.categories[1].vote
                         },
                         {
                             match: 'cat2_leaderboard',
-                            replacement: labels.categories[1].query
+                            replacement: labels.categories[1].leaderboard
                         }
                     ]
                 },
