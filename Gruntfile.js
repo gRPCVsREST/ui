@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     var config = grunt.file.readJSON('app/assets/labels.json');
 
     var type = (grunt.option('type') || "").toLowerCase();
-    type = (type == 'zrada' || type == 'pokemon'? type: 'pokemon');
+    type = (type == 'zrada' || type == 'pokemon' || type == 'crypto'? type: 'pokemon');
     var labels = config[type];
     console.log(type, labels);
 

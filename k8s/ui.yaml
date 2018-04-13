@@ -1,5 +1,3 @@
-#!/bin/bash
-cat <<YAML
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -13,7 +11,7 @@ spec:
     spec:
       containers:
         - name: ui
-          image: gcr.io/$GCP_PROJECT/ui:latest
+          image: gcr.io/alien-fold-180922/ui:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -40,4 +38,3 @@ spec:
      targetPort: 3000
      protocol: TCP
 ---
-YAML

@@ -30,5 +30,21 @@
         "text": "Big Data"
       }
     ]
+  },
+  "crypto": {
+    "title": "Crypto or Pokemon?",
+    "greeting": "Hello",
+    "categories": [
+      {
+        "vote": "CRYPTO",
+        "leaderboard": "CRYPTO",
+        "text": "Crypto"
+      },
+      {
+        "vote": "POKEMON",
+        "leaderboard": "POKEMON",
+        "text": "Pokemon"
+      }
+    ]
   }
 }
